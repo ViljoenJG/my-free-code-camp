@@ -13,32 +13,18 @@
 
 
 function whatIsInAName(collection, source) {
-  // What's in a name?
-  var arr = [];
-  // Only change code below this line
-  for (var a=0; a<collection.length; a++) {
-    var obj = collection[a];
-    var match = true;
-
-    for (var prop in source) {
-      if (!obj.hasOwnProperty(prop)) {
-        match = false;
-        break;
+  return collection.filter(item => {
+    for(var key in source) {
+      if(!item.hasOwnProperty(key)) {
+        return false;
       }
 
-      if (obj[prop] != source[prop]) {
-        match = false;
-        break;
+      if(item[key] !== source[key]) {
+        return false;
       }
     }
-
-    if (match) {
-      arr.push(obj);
-    }
-  }
-
-  // Only change code above this line
-  return arr;
+    return true;
+  })
 }
 
 whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
