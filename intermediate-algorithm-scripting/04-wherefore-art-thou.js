@@ -13,7 +13,7 @@
 
 
 function whatIsInAName(collection, source) {
-  return collection.filter(item => {
+  return collection.filter(function(item) {
     for(var key in source) {
       if(!item.hasOwnProperty(key)) {
         return false;
